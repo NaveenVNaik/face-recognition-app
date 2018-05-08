@@ -1,0 +1,11 @@
+.nav{
+	display: flex;
+	border-color: black;
+	justify-content: space-between;
+}
+.signout{
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+

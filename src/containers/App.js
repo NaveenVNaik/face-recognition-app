@@ -3,6 +3,7 @@ import './App.css';
 import Inputimage from '../components/inputimage/Inputimage';
 import Rank from '../components/rank/Rank';
 import Particles from 'react-particles-js';
+import SignoutNav from '../components/navigation/SignoutNav';
 
 const particleOptions = {
 "particles":{"number":{"value":80,"density":{"enable":true,"value_area":800}},"color":{"value":"#ffffff"},
@@ -22,6 +23,7 @@ class App extends Component {
     return (
       <div className="App">
         <Particles className='particles' params={particleOptions} />
+        <SignoutNav />
         <Rank />
         <Inputimage />
       </div>

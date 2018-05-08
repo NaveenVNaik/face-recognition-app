@@ -3,7 +3,7 @@ import './Rank.css'
 
 const Rank = () =>{
 	return (
-		<div className="mt5 flex center">
+		<div className="flex center">
 			<div className="center">
 				{
 					'Naveen, your rank is: #4'
