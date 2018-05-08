@@ -19,16 +19,32 @@ const particleOptions = {
 }
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Particles className='particles' params={particleOptions} />
-        <SignoutNav />
-        <Rank />
-        <Inputimage />
-      </div>
-    );
-  }
+	constructor(){
+		super();
+		this.state= {
+			inputURL: '', 
+		}
+	}
+
+	onInputURLChange = (event) => {
+		this.inputURL = event.target.value;
+		console.log(this.inputURL);
+	}
+
+	onClickDetect = () =>{
+		console.log('inside detect',this.inputURL);
+	}
+
+	render() {
+	    return (
+	      <div className="App">
+	        <Particles className='particles' params={particleOptions} />
+	        <SignoutNav />
+	        <Rank />
+	        <Inputimage URLChange={this.onInputURLChange} clickDetect={this.onClickDetect}/>
+	      </div>
+	    );
+  	}
 }
 
 export default App;

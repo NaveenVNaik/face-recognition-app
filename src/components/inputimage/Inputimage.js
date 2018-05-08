@@ -1,7 +1,9 @@
 import React from 'react';
 import './Inputimage.css'
 
-const Inputimage = () =>{
+// const Inputimage = (props) =>{
+	// const URL = props.URLChange;
+const Inputimage = ({URLChange,clickDetect}) =>{
 	return (
 		<div className="">
 			<div>
@@ -9,9 +11,10 @@ const Inputimage = () =>{
 			</div>
 			<div className="center">
 				<div className="form pa4 center br3 ">
-					<input type="text" placeholder="Enter Image URL" className="center w-70 pa2"/>
+					<input type="text" placeholder="Enter Image URL" className="center w-70 pa2" onChange={URLChange}/>
 					<button name="Detect" value="Detect" 
-						className="w-30 grow pointer ph3 pv2 dib white bg-light-purple "
+						className="w-30 grow pointer ph3 pv2 dib white bg-light-purple"
+						onClick={clickDetect}
 						>
 						Detect
 					</button>
