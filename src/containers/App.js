@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import Clarifai from 'clarifai';
 import './App.css';
 import Inputimage from '../components/inputimage/Inputimage';
 import Rank from '../components/rank/Rank';
 import Particles from 'react-particles-js';
 import SignoutNav from '../components/navigation/SignoutNav';
+import FaceRecognition from '../components/facerecognition/FaceRecognition';
+
 
 const particleOptions = {
 "particles":{"number":{"value":80,"density":{"enable":true,"value_area":800}},"color":{"value":"#ffffff"},
@@ -18,21 +21,39 @@ const particleOptions = {
 
 }
 
+
+const app = new Clarifai.App({
+ apiKey: 'f597eceb31154064ba1f42f1284e64af'
+});
+
 class App extends Component {
 	constructor(){
 		super();
 		this.state= {
 			inputURL: '', 
+			imageURL: ''
 		}
 	}
 
 	onInputURLChange = (event) => {
-		this.inputURL = event.target.value;
-		console.log(this.inputURL);
+		this.setState( {inputURL: event.target.value} );
+		console.log('inside url',this.inputURL);
 	}
 
 	onClickDetect = () =>{
-		console.log('inside detect',this.inputURL);
+		this.setState( {imageURL: this.state.inputURL} );
+
+		console.log('inside detect',this.imageURL);
+
+		app.models.predict(Clarifai.COLOR_MODEL, "")
+					.then(
+		   					function(response) {
+		      					console.log(response);
+		   					 },
+						    function(err) {
+						      
+						    }
+						);
 	}
 
 	render() {
@@ -42,6 +63,7 @@ class App extends Component {
 	        <SignoutNav />
 	        <Rank />
 	        <Inputimage URLChange={this.onInputURLChange} clickDetect={this.onClickDetect}/>
+	        <FaceRecognition imageURL={this.imageURL}/>
 	      </div>
 	    );
   	}
