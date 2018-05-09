@@ -30,30 +30,37 @@ class App extends Component {
 	constructor(){
 		super();
 		this.state= {
-			inputURL: '', 
+			inputURL:'', 
 			imageURL: ''
 		}
 	}
 
 	onInputURLChange = (event) => {
+		console.log(event.target.value);
 		this.setState( {inputURL: event.target.value} );
-		console.log('inside url',this.inputURL);
+		this.setState( {imageURL: event.target.value} );
+		console.log('inside url',this.state.inputURL);
+		console.log('inside url-image',this.state.imageURL);
 	}
 
-	onClickDetect = () =>{
-		this.setState( {imageURL: this.state.inputURL} );
+	onClickDetect = () => {
+		//this.setState( {imageURL: } );
+		console.log('inside detect 1',this.state.inputURL);
+		console.log('inside detect 2',this.state.imageURL);
 
-		console.log('inside detect',this.imageURL);
-
-		app.models.predict(Clarifai.COLOR_MODEL, "")
-					.then(
-		   					function(response) {
-		      					console.log(response);
-		   					 },
-						    function(err) {
-						      
-						    }
-						);
+		app.models.predict(
+			Clarifai.COLOR_MODEL,
+			    // URL
+			    "https://samples.clarifai.com/metro-north.jpg"
+			)
+			.then(function(response) {
+			    // do something with response
+			    console.log(response);
+			    },
+			    function(err) {// there was an error
+				
+				}
+			);
 	}
 
 	render() {
@@ -62,8 +69,8 @@ class App extends Component {
 	        <Particles className='particles' params={particleOptions} />
 	        <SignoutNav />
 	        <Rank />
-	        <Inputimage URLChange={this.onInputURLChange} clickDetect={this.onClickDetect}/>
-	        <FaceRecognition imageURL={this.imageURL}/>
+	        <Inputimage onInputURLChange={this.onInputURLChange} onClickDetect={this.onClickDetect}/>
+	        <FaceRecognition imageUR={this.state.imageURL}/>
 	      </div>
 	    );
   	}

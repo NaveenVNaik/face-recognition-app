@@ -3,7 +3,7 @@ import './Inputimage.css'
 
 // const Inputimage = (props) =>{
 	// const URL = props.URLChange;
-const Inputimage = ({URLChange,clickDetect}) =>{
+const Inputimage = ({onInputURLChange,onClickDetect}) =>{
 	return (
 		<div className="">
 			<div>
@@ -11,10 +11,13 @@ const Inputimage = ({URLChange,clickDetect}) =>{
 			</div>
 			<div className="center">
 				<div className="form pa4 center br3 ">
-					<input type="text" placeholder="Enter Image URL" className="center w-70 pa2" onChange={URLChange}/>
+					<input type="search" placeholder="Enter Image URL" className="center w-70 pa2" 
+						id="roboSearch" name="roboSearch" 
+						onChange={onInputURLChange}
+					/>
 					<button name="Detect" value="Detect" 
 						className="w-30 grow pointer ph3 pv2 dib white bg-light-purple"
-						onClick={clickDetect}
+						onClick={onClickDetect}
 						>
 						Detect
 					</button>

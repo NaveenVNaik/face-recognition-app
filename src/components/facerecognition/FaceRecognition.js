@@ -1,10 +1,12 @@
 import React from 'react';
 
 
-const FaceRecognition = ({imageURL}) =>{
+const FaceRecognition = ({imageUR}) =>{
+	//const {imageURL} = {props};
+	console.log("inside FaceRecognition",'imageURL');
 	return (
 		<div className="flex center">
-			<img src={imageURL} alt="" />
+			<img src={imageUR} alt="" />
 		</div>
 	);
 }
